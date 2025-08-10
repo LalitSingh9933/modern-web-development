@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content=" Learn HTML and css with semantic tags , SEO optimization, and responsive design.">
+    <meta name="author" content="lalit singh">
+    <meta name="keywords" content=" html,CSS">
+    <title>Html and CSS Advanced Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1> My Awesome website</h1>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#about" aria-current="page">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2 id="about"> About Us</h2>
+            </header>
+            <p>We create modern, responsive website using HTML , CSS3, and Javascript.</p>
+        </article>
+        <section id="services">
+            <h2> Our Services</h2>
+            <ul>
+                <li>Web Desing</li>
+                <li>Web Develpment</li>
+                <li>SEO Optimization</li>
+
+            </ul>
+        </section>
+        <section>
+            <h2>Contact Us</h2>
+            <form aria-label="Contact form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+
+        <p>&copy; 2025 My Awesome Website</p>
+
+    </footer>
+</body>
+
+</html>
