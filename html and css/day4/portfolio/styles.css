@@ -1,0 +1,73 @@
+:root {
+    --primary: #0f4570;
+    --secondary: #244469;
+    --text: #333;
+    --bg: #fff;
+    --max-width: 1100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    font-family: sans-serif;
+    color:var(--text);
+    background-color: var(--bg);
+    line-height: 1.6;
+}
+.container{
+    width:90%;
+    max-width:var(--max-width);
+    margin: auto;
+}
+.header{
+    background: var(--primary);
+    padding: 1rem 0;
+}
+.logo{
+    color:white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.logo span{
+    color: var(--secondary)
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links a{
+    color: white;
+    text-decoration: none;
+}
+.menu-toggle{
+    display: none;
+    background: none;
+    color: white;
+    font-size:1.5rem;
+    border: none;
+}
+/* hero  section*/
+.hero{
+    background: url('assets/profile2.png') center/cover no-repeat;
+    color: white;
+     padding: 5rem 0;
+     text-align: center;
+}
+.hero h1 span{
+    color: var(--secondary);
+
+}
+.btn{
+    display: inline-block;
+    background: var(--secondary);
+    color:white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top:1rem;
+}
