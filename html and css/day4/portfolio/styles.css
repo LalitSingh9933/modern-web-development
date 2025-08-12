@@ -26,6 +26,9 @@ body {
     margin: auto;
     margin-bottom: 10px;
 }
+.container h2{
+    padding: 10px 0px 10px 0px;
+}
 
 .header {
     background: var(--primary);
@@ -71,7 +74,7 @@ a{
 
 /* hero  section*/
 .hero {
-    background: url('assets/profile2.png') center/cover no-repeat;
+    background: url('assets/color2.webp') center/cover no-repeat;
     color: white;
     padding: 5rem 0;
     text-align: center;
@@ -140,9 +143,12 @@ textarea {
     }
     .menu-toggle{
         display: block;
+        
 
     }
     .nav-links.show{
         display: flex;
+        align-items: center;
+        border-radius: 0px 10px;
     }
 }
