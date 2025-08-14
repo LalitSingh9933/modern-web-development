@@ -1,6 +1,6 @@
 :root{
     --primary-color:#3498db;
-    --secondary-color:#2ecc71;
+    
     --font-size:16px;
     --text-color:rgb(40, 30, 21);
 }
@@ -27,6 +27,8 @@ main{
 form{
     display: flex;
     gap:0.5rem;
+    display: center;
+    justify-content: center;
 
 }
 
@@ -38,6 +40,13 @@ button{
     cursor: pointer;
     border-radius: 15px;
 }
+#todo-input{
+    border-radius: 10px;
+    padding: 10px 5px 10px 5px;
+    margin: 5px;
+    width: 50%;
+
+}
 button:hover{
     background: var(--primary-color);
 }
@@ -47,8 +56,8 @@ ul{
     margin-top: 14px;
 }
 li{
-    background-color: var(--secondary-color);
-    padding: 8px;
+    background-color: var(--primary-color);
+    padding: 20px;
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
@@ -58,4 +67,11 @@ li{
 li.done{
     text-decoration:line-through;
     color:gray;
+}
+.delete-btn{
+    background: red;
+    color:white;
+    border:none;
+    padding: 10px;
+    border-radius: 5px;
 }
