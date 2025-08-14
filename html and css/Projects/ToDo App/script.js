@@ -7,8 +7,8 @@ const years = document.getElementById('year');
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const taskText = todoInput.ariaValueMax().trime();
-    if (taskText === '') {
+    const taskText = todoInput.value.trim();
+    if (taskText !== '') {
         addTask(taskText);
         todoInput.value = '';
     }
