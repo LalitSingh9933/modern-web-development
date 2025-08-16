@@ -1,14 +1,15 @@
-const questions =[
+document.addEventListener('DOMContentLoaded', function() {
+const questions = [
     {
         question: "What the full form of HTML?",
         options: [
-     "Hyper Text Markup Language",
+            "Hyper Text Markup Language",
             "Home Tool Markup Language",
             "Hyperlinks and Text Markup Language",
-            "Hyper Text Makeup Language" 
+            "Hyper Text Makeup Language"
         ],
-        answer: "Hyper Text Makeup Language" 
-    
+        answer: "Hyper Text Markup Language"
+
     },
     {
         question: "What does CSS stand for?",
@@ -53,35 +54,96 @@ const questions =[
 ];
 //dom
 
-const questionElement= document.getElementById("question");
-const options=document.getElementById("options");
-const next_btn =document.getElementById("next-btn");
+const questionElement = document.getElementById("question");
+const options = document.getElementById("options");
+const next_btn = document.getElementById("next_btn");
 const result = document.getElementById("result");
 const score = document.getElementById("score");
-const total_qustions= document.getElementById("total-questions");
+const total_questions = document.getElementById("total-question");
 
-let current_question= 0;
-let scoreValue=0;
-let selectedOption =null;
+let current_question = 0;
+let scoreValue = 0;
+let selectedOption = null;
 //initialize the quiz
-function startQuiz(){
-    current_question=0;
-    scoreValue=0;
-    total_qustions.textContent=questions.length;
+function startQuiz() {
+    current_question = 0;
+    scoreValue = 0;
+    total_questions.textContent = `Total Questions: ${questions.length}`;
+    score.textContent = scoreValue;    
     showQuestion();
 }
-function showQuestion(){
+function showQuestion() {
     resetState();
-    const current_question= questions[current_question];
-    questionElement.textContent = current_question.question;
-    current_question.options.forEach((option, index) => {
+    const currentQuestionObj = questions[current_question];
+    questionElement.textContent = currentQuestionObj.question;
+
+    currentQuestionObj.options.forEach((option) => {
         const button = document.createElement("button");
         button.textContent = option;
         button.classList.add("option-btn");
         options.appendChild(button);
         button.addEventListener("click", () => {
-            selectedOption (option);
-            
+            selectOption(option);
+
         });
     });
 }
+  function resetState() {
+    if(next_btn) {
+ next_btn.style.display = "none";
+    }
+    result.textContent = "";
+    options.innerHTML = "";
+}
+
+function selectOption(option) {
+    selectedOption = option;
+    const currentQuestionObj = questions[current_question];
+    const optionButtons = document.querySelectorAll(".option-btn");
+    
+    optionButtons.forEach(button => {
+        button.disabled = true;
+        if (button.textContent === selectedOption) {
+            button.style.backgroundColor = '#4CAF50';
+            button.style.color = 'white';
+        } else {
+            button.style.backgroundColor = '#f0f0f0';
+            button.style.color = 'black';
+        }
+    });
+    
+    // Check if answer is correct
+    const isCorrect = selectedOption === currentQuestionObj.answer;
+    if (isCorrect) {
+        result.textContent = 'Correct!';
+        result.style.color = 'green';
+        scoreValue++;
+        score.textContent = scoreValue;
+    } else {
+        result.textContent = 'Wrong!';
+        result.style.color = 'red';
+    }
+    
+    next_btn.style.display = 'block';
+}
+
+function nextQuestion() {
+    current_question++;
+    if (current_question < questions.length) {
+        showQuestion();
+    } else {
+        // Quiz completed
+        questionElement.textContent = `Quiz completed! Your score: ${scoreValue}/${questions.length}`;
+        options.innerHTML = "";
+        result.textContent = "";
+        next_btn.style.display = "none";
+    }
+}
+
+ if (next_btn) {
+        next_btn.addEventListener("click", nextQuestion);
+    }
+
+// Start the quiz
+startQuiz();
+});
