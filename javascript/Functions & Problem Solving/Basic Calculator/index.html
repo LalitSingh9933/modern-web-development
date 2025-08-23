@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <main>
+        <section class="container">
+           
+                <div>
+                    <label for="num1">First Number:</label>
+                    <input type="number" id="num1" name="num1" placeholder="Enter first number" required>
+                </div>
+                <div>
+                    <label for="num2">Second Number:</label>
+                    <input type="number" id="num2" name="num2" placeholder="Enter second number" required>
+                </div>
+                <fieldset>
+                    <legend>Choose Operation </legend>
+                    <button class="btn" onclick="calculate('add')">+</button>
+                    <button class="btn" onclick="calculate('sub')" >-</button>
+                     <button class="btn" onclick="calculate('mul')">*</button>
+                     <button class="btn" onclick="calculate('div')">/</button>
+                </fieldset>
+      
+            <section >
+                <h2 id="result"> Result:</h2>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
