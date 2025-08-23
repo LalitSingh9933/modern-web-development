@@ -43,4 +43,18 @@ let double= arr.map(num => num *2);
 console.log("Double:", double); // , notation show the prototype in console.
 
 //Array of Object 
-let student=[];
+let students=[
+    {name:'lalit',age:20},
+    {name:"suman",age:22},
+    {name:"charli",age:19}
+];
+//print all name
+students.forEach(s=> console.log(s.name));
+
+//find one
+let student=students.find(s=> s.age==22);
+console.log(student);
+
+//filter.. this provide the adult user only
+let adults = students.filter(s=>s.age >= 18);
+console.log(adults);
