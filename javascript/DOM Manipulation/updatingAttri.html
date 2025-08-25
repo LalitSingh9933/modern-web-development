@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updating Attributes</title>
+</head>
+<body>
+    <img id="image" src="https://images.pexels.com/photos/32896726/pexels-photo-32896726.jpeg" width="150">
+    <button id="change">Change Image</button>
+    <script>
+        const img= document.getElementById("image");
+        const changeBtn=document.getElementById("change");
+        changeBtn.addEventListener("click",() =>{
+            img.setAttribute("src", "https://images.pexels.com/photos/33520767/pexels-photo-33520767.jpeg");
+            img.setAttribute("alt", 'Random Image');
+        })
+    </script>
+    
+</body>
+</html>

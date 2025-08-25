@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select element dom</title>
+    <!-- This is for revise and practice not  formal method of development -->
+</head>
+<body>
+<h1 id="title">Hello World</h1>
+<p class="text">This is a paragraph.</p>
+<button id="btn">Change Text</button>
+<script>
+    const title =document.getElementById("title");
+    const text = document.querySelector(".text") //. for class
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click",() =>{
+        title.textContent="javascript Dom is Powerfull !";
+        text.style.color="blue"
+    });        
+    </script>
+</body>
+</html>
