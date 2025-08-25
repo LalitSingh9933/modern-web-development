@@ -1,0 +1,37 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:linear-gradient(to right, gray,white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container{
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(red, green, blue, 0.02);
+    text-align: center;
+     width:300px;
+}
+ input{
+    padding: 8px;
+    width: 70%;
+    margin-right:5px;
+ }
+ button{
+    padding: 8px 10px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 10px;
+
+ }
+ li{
+    list-style:none;
+    padding: 5px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+ }
