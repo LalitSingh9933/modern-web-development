@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic</title>
+</head>
+
+<body>
+    <main id="main-title">
+<ul id="items-list">
+
+</ul>
+    </main>
+    <script>
+ const book = ['data communication',"maths",'english',"science"];
+const list = document.getElementById("items-list");
+ book.forEach(listofbook=>{
+    const booklist = document.createElement("li");
+   
+    booklist.textContent= listofbook;
+list.appendChild(booklist);
+
+ })
+    </script>
+</body>
+
+</html>
