@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carausal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{font-size: 62.5%;}
+
+        body {
+            height: 100vh;
+            display: grid;
+            place-content: center;
+
+
+
+
+        }
+
+        .container-img {
+            width: 60vw;
+            height: 50rem;
+            border-radius: 1rem;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background-image: url("https://images.pexels.com/photos/21701400/pexels-photo-21701400.jpeg");
+            background-size: cover;
+            animation: gallery 20s linear infinite;
+           
+
+
+        }
+
+        @keyframes gallery {
+            0% {
+                background-image: url("https://images.pexels.com/photos/27593283/pexels-photo-27593283.jpeg");
+            }
+
+            20% {
+                background-image: url("https://images.pexels.com/photos/11372759/pexels-photo-11372759.jpeg");
+            }
+
+            40% {
+                background-image: url("https://images.pexels.com/photos/16121970/pexels-photo-16121970.jpeg");
+
+            }
+
+            60% {
+                background-image: url("https://images.pexels.com/photos/1162983/pexels-photo-1162983.jpeg");
+            }
+
+            80% {
+                background-image: url("https://images.pexels.com/photos/30993363/pexels-photo-30993363.jpeg");
+
+            }
+
+            100% {
+                background-image: url("https://images.pexels.com/photos/2451040/pexels-photo-2451040.jpeg");
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-img">
+
+    </div>
+
+</body>
+
+</html>

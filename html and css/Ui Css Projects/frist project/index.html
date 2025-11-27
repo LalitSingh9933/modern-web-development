@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first project</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background-color:#191825;
+            /*1st  trick*/
+           /* position:relative; */
+           /*second using flex box or grid same way */
+           /*
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           */
+           /*3rd grid way */
+           /*
+           display: grid;
+         place-items: center;
+         */
+         /* 5th */
+         display: flex;
+
+        }
+        .child{
+            width: 400px;
+            height: 500px;
+            background-color: #865dff;
+          /*  position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50% ,-50%);
+            */
+            /*5th way */
+            margin:auto; 
+            border-radius: 50px;
+            /* trying text center ok */
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-transform: uppercase;
+           color: white;
+           font-size: large;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="child">Hello world</div>
+    
+</body>
+</html>
