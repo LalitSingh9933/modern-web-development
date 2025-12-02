@@ -1,0 +1,85 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+
+
+ }
+
+ body {
+     height: 100vh;
+     display: grid;
+     place-items: center;
+     background-color: #191825;
+ }
+
+ button {
+     padding: 12px 36px;
+     border: 2px solid #5d9bff;
+     text-align: center;
+     color: #5d9bff;
+     font-weight: bold;
+     font-size: 20px;
+     text-transform: capitalize;
+     background-color: transparent;
+     border-radius: 20px;
+
+     &:hover {
+         border: 2px solid rgb(255, 170, 0);
+         color: rgb(255, 170, 0);
+         animation: shaking 0.3s linear;
+     }
+ }
+
+ @keyframes shaking {
+     0% {
+         rotate: 20deg;
+
+     }
+
+     50% {
+         rotate: -20deg;
+     }
+
+     100% {
+         rotate: 20deg;
+     }
+ }
+
+ h1 {
+     text-align: center;
+     color: #ffff;
+     font-weight: bold;
+     font-size: 60px;
+     text-shadow: -1px 2px 3px #ecf74c33;
+     position: relative;
+
+
+ }
+
+ h1::before {
+     content: "HELLOWORLD....";
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 10%;
+     color: #ffc400;
+     text-transform: uppercase;
+     border-right: 2px solid #ffc400;
+     overflow: hidden;
+     animation: textreveal 2s linear infinite;
+
+
+ }
+ @keyframes textreveal{
+    0%{
+        width: 0;
+    }
+    50%{
+        width: 100%;
+    }
+    100%{
+        width:0%
+    }
+    
+ }
