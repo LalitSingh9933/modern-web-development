@@ -86,3 +86,46 @@ for(let i=1; i<20; i++){
         console.log(i);
     }
 }
+//Example: validating use input with a Do... While loop (user need to write a valid  number)
+
+let userInput;
+let positiveNumber;
+do{
+    userInput =prompt('enter any positive number');
+    positiveNumber=parseFloat(userInput);
+
+}while(isNaN(positiveNumber)|| positiveNumber<0);
+
+//for loop eg: 
+let aadd =0;
+for(let num=1; num<= 10; num++){
+     aadd +=num;
+   
+}
+
+//2: write a program  to check if a number is prime.
+let num1=4;
+var isPrime =true;
+for(var i= 2; i<num1; i++){
+    if(num1%i==0){
+        isPrime = false;
+        break;
+    }
+}
+if(isPrime){
+    console.log("Num is prime");
+    
+}
+else{
+    console.log("Num is not prime");
+}
+
+
+//pattern using for loop 
+for(let i=1; i<=5;i++ ){
+    var pattern="";
+    for(let j= 1;j<=i; j++){
+        pattern=pattern+" *";
+    }
+    console.log(pattern);
+}
