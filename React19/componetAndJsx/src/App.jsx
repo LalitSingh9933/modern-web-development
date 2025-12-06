@@ -1,12 +1,18 @@
 import { useState } from 'react'
+import { BrowserRouter,Routes,Route} from 'react-router-dom';
+import Home from './componets/Home'
+import About from './componets/About';
 
-function App() {
-  const [count, setCount] = useState(0)
+function App() {  const name = "lalit Singh";
+  
 
   return (
-    <>
-      <h1 className='hello text-shadow-cyan-400'>Hello World</h1>
-    </>
+  <BrowserRouter>
+  <Routes>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/about' element={<About/>}/>
+  </Routes>
+  </BrowserRouter>
   )
 }
 
