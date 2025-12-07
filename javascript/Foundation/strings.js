@@ -37,18 +37,23 @@ const msg =`  hi ${name}, your score is ${score}`;
  
  //how many time the in the para
 
- function countThe(para){
-    const matches= para.match(/\bthe\b/gi);
-    return matches ?matches.length: 0;
+//  function countThe(para){
+//     const matches= para.match(/\bthe\b/gi);
+//     return matches ?matches.length: 0;
 
- }
- console.log(countThe("The quick brown fox jumps over the lazy dog."))
-//output is :2 ;
+//  }
+//  console.log(countThe("The quick brown fox jumps over the lazy dog."))
+// //output is :2 ;
 
-// mask a phone number except last 3 digits
- function phoneNumber(phone){
-    if(phone<=3) return phone;
-    return '*'.repeat(phone.length -3)+phone.slice(-3);
+// // mask a phone number except last 3 digits
+//  function phoneNumber(phone){
+//     if(phone<=3) return phone;
+//     return '*'.repeat(phone.length -3)+phone.slice(-3);
 
- }
- console.log(phoneNumber("9864779019"))
+//  }
+//  console.log(phoneNumber("9864779019"))
+
+ //changing string into array
+ let text="Lalit Singh";
+ let strArr = Array.from(text);
+ console.log(strArr); 
