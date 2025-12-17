@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #1e1e1e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CONTAINER */
+.container {
+    width: 85%;
+    background-color: #d6d1d1;
+    border-radius: 18px;
+    padding: 2rem;
+}
+
+/* SEARCH HEADER */
+.weather_header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 3rem;
+}
+
+.weather_search {
+    position: relative;
+    width: 280px;
+}
+
+.weather_search input {
+    width: 100%;
+    padding: 12px 12px 12px 42px;
+    background-color: #1e1e1e;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.weather_search input::placeholder {
+    color: #e0e0e0;
+}
+
+.weather_search i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* WEATHER BODY */
+.weather_body {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.weather_city {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.weather_date_time {
+    color: #8b8b8b;
+    margin: 8px 0 18px;
+}
+
+.weather_forecast {
+    display: inline-block;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+}
+
+.weather_icon {
+    margin: 1.5rem 0;
+}
+
+.weather_temperature {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.weather_minmax {
+    color: #6b6b6b;
+    margin-top: 6px;
+}
+
+/* WEATHER INFO CARDS */
+.weather_info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.weather_card {
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.weather_card i {
+    font-size: 22px;
+    color: #1e1e1e;
+}
+
+.weather_card p:first-child {
+    font-size: 14px;
+    color: #7a7a7a;
+}
+
+.weather_card p:last-child {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .weather_info {
+        grid-template-columns: 1fr;
+    }
+}
