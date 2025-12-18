@@ -1,21 +1,20 @@
 import { useState } from 'react'
+import Home from '../src/components/Home';
+import About from '../src/components/About'
 import { BrowserRouter,Routes,Route} from 'react-router-dom';
-import Home from './componets/Home'
-import About from './componets/About';
-import Useeffect from './componets/Useeffect';
 
-function App() {  const name = "lalit Singh";
-  
+function App() {
+
 
   return (
-  <BrowserRouter>
+   <BrowserRouter>
   <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/about' element={<About/>}/>
-    <Route path='/Useeffect' element={<Useeffect/>}/>
   </Routes>
   </BrowserRouter>
   )
 }
+
 
 export default App
