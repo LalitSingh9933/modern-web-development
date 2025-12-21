@@ -34,7 +34,7 @@ function Clock() {
       </select>
 
       <h1
-        className={`${colorClasses[color]} bg-black w-[200px] p-5 rounded-2xl text-center text-2xl`}
+        className={` ${colorClasses[color]} bg-black  p-5 rounded-2xl text-center text-2xl`}
       >
         {time}
       </h1>

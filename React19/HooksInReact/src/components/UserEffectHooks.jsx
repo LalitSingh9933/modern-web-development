@@ -4,7 +4,7 @@ function UserEffectHooks() {
   const [count, setCount]=useState(0);
    useEffect(()=>{
 
-        console.log("Second Type of  useEffect")
+        // console.log("Second Type of  useEffect")
      },[count])
   return (
     <div>

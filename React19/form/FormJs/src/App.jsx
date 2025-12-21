@@ -2,7 +2,6 @@ import React from 'react'
 import InputField from './components/InputField'
 import CheckBox from './components/CheckBox'
 import RadioButton from './components/RadioButton'
-
 import Clock from './components/Clock'
 
 
