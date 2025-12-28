@@ -1,90 +1,111 @@
 import React, { useEffect, useState } from 'react'
 import Layout from "../../components/layout/Layout"
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { baseUrl } from '../../config'
-function SingleBlog() {
 
-  const {id}=useParams()
-  // console.log(id)
-  const[blog,setBlog]=useState({})
-  const fetchBlogs =async ()=>{
-  const response = await axios.get(`${baseUrl}/blog/${id}`)
-  if(response.status===200){
-    setBlog(response.data.data);
+function SingleBlog() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [blog, setBlog] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  const fetchBlog = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/blog/${id}`)
+      if (response.status === 200) {
+        setBlog(response.data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching blog:', error)
+    } finally {
+      setLoading(false)
+    }
   }
+
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete this blog?')) {
+      try {
+        await axios.delete(`${baseUrl}/blog/${id}`)
+        navigate('/') // Redirect to home after deletion
+      } catch (error) {
+        console.error('Error deleting blog:', error)
+      }
+    }
   }
-  useEffect(()=>{
-    fetchBlogs();
-  },[])
+
+  useEffect(() => {
+    fetchBlog()
+  }, [id])
+
+  if (loading) return <Layout><div className="text-center py-10">Loading...</div></Layout>
+  if (!blog) return <Layout><div className="text-center py-10">Blog not found</div></Layout>
 
   return (
-    <div>
-      <Layout>
- 
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-10 px-4">
-      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+    <Layout>
+      <div className="max-w-3xl mx-auto py-8 px-4">
 
-        {/* Blog Image */}
-        <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-          alt="Blog"
-          className="w-full h-72 object-cover"
-        />
+        <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
 
-        {/* Blog Content */}
-        <div className="p-8">
-          {/* Title */}
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
-            Blog Title Goes Here
-          </h1>
+        <div className="flex items-center text-gray-600 mb-8">
+          <span className="font-medium">{blog.author || 'Anonymous'}</span>
+          <span className="mx-2">•</span>
+          <span>{new Date(blog.createdAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}</span>
+        </div>
 
-          {/* Subtitle */}
-          <h2 className="text-lg text-gray-500 dark:text-gray-400 mb-6">
-            This is the subtitle of the blog post
-          </h2>
+        {blog.image && (
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="w-full mb-8 rounded-lg"
+          />
+        )}
 
-          {/* Meta Info */}
-          <div className="flex items-center text-sm text-gray-400 mb-6">
-            <span>By Admin</span>
-            <span className="mx-2">•</span>
-            <span>Sep 20, 2025</span>
+        <div className="text-lg leading-relaxed text-gray-800">
+          {blog.content || blog.description}
+        </div>
+
+        {/* Blog Tags */}
+        {blog.tags && blog.tags.length > 0 && (
+          <div className="mt-8 pt-6 border-t">
+            <div className="flex flex-wrap gap-2">
+              {blog.tags.map((tag, index) => (
+                <span key={index} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
+        )}
 
-          {/* Description */}
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Suspendisse potenti. Integer nec urna nec urna placerat 
-            convallis. Donec euismod, nisi vel consectetur interdum, 
-            nisl felis aliquam justo, nec ultricies sapien lorem non odio.
-            <br /><br />
-            Vivamus laoreet, purus non facilisis tempor, justo augue 
-            tristique lectus, sed porta elit felis non nunc. Curabitur 
-            fermentum, sapien vel lacinia gravida, elit ipsum bibendum arcu,
-            vitae bibendum magna turpis at lacus.
-          </p>
+        {/* Action Buttons */}
+        <div className="mt-12 pt-8 border-t flex justify-between items-center">
+          <Link to="/" className="text-blue-600 hover:text-blue-800 hover:underline">
+            ← Back to all blogs
+          </Link>
 
-          {/* Divider */}
-          <hr className="my-8 border-gray-200 dark:border-gray-700" />
-
-          {/* Actions */}
-          <div className="flex justify-between items-center">
-            <Link to="/blog/edit">
-              <button className="px-5 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition">
+          <div className="flex gap-3">
+            <Link
+              to={`/blog/edit/${blog._id}`}
+              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
+            >
               Edit Blog
-            </button>
-
             </Link>
-          
-            <button className="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+
+            <button
+              onClick={handleDelete}
+              className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition"
+            >
               Delete Blog
             </button>
           </div>
         </div>
       </div>
-    </div>
-        </Layout>
-    </div>
+    </Layout>
   )
 }
 
