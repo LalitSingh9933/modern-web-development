@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from '../../components/NavBar'
 import Layout from '../../components/layout/Layout'
 import Card from './components/cards/Card'
 import axios from 'axios'
@@ -14,7 +13,9 @@ function Home() {
     try {
       const response = await axios.get(`${baseUrl}/blog`)
       if (response.status === 200) {
-        setBlogs(response.data.data || response.data)
+         const sortedBlogs=(response.data.data || response.data)
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+         setBlogs(sortedBlogs)
       }
     } catch (error) {
       console.error('Error fetching blogs:', error)
@@ -30,16 +31,7 @@ function Home() {
   return (
     <Layout>
       <div className="max-w-4xl mx-auto py-8 px-4">
-        {/* Header with Add Blog button */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Latest Blogs</h1>
-          <Link
-            to="/blog/add"
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            + Add New Blog
-          </Link>
-        </div>
+      
 
         {/* Blog List */}
         {loading ? (

@@ -1,88 +1,92 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-function Form({ type, onSubmit }) {
+function Form({ type, onSubmit, initialData }) {
     const [data, setData] = useState({
         title: '',
         subtitle: '',
         description: '',
-        image: ''
+        image: null,
+        category: ''
     })
+
+    // Populate data when editing
+    useEffect(() => {
+        if (initialData) {
+            setData(prev => ({
+                ...prev,
+                ...initialData
+            }))
+        }
+    }, [initialData])
+
     const handleChange = (e) => {
-        const { name, value } = e.target
+        const { name, value, files } = e.target
         setData({
             ...data,
-            [name]: name === 'image' ? e.target.files[0] : value
+            [name]: files ? files[0] : value
         })
     }
+
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         onSubmit(data)
-
     }
+
     return (
-        <div>
-            <div className="flex items-center min-h-screen bg-gray-50 dark:bg-gray-900">
-                <div className="container mx-auto">
-                    <div className="max-w-md mx-auto my-10 bg-white dark:bg-gray-800 p-5 rounded-md shadow-sm">
-                        <div className="text-center">
-                            <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">{type}</h1>
-                            <p className="text-gray-400 dark:text-gray-400">Share your idea with world</p>
-                        </div>
-                        <div className="m-7">
-                            <form onSubmit={handleSubmit}>
-                                <div className="mb-6">
-                                    <label htmlFor="title" className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Tital </label>
-                                    <input
-                                        type="text"
-                                        name="title"
-                                        placeholder="John Doe"
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                                </div>
-                                <div className="mb-6">
-                                    <label htmlFor="subtitle" className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Subtitle</label>
-                                    <input
-                                        type="subtitle"
-                                        name="email"
-                                        placeholder="Subtitle"
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                                </div>
-                                <div className="mb-6">
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6">
+            <input
+                type="text"
+                name="title"
+                value={data.title}
+                onChange={handleChange}
+                placeholder="Title"
+                required
+                className="w-full mb-4 p-3 border rounded"
+            />
 
-                                    <label htmlFor="img" className="text-sm text-gray-600 dark:text-gray-400">Image</label>
-                                    <input
-                                        type="file"
-                                        name="img"
-                                        placeholder="File"
-                                        onChange={handleChange}
-                                    
-                                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
-                                </div>
-                                <div className="mb-6">
-                                    <label htmlFor="message" className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Description</label>
-                                    <textarea
-                                        rows="5"
-                                        name="message"
-                                        id="message"
-                                        placeholder="Description"
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" required></textarea>
-                                </div>
-                                <div className="mb-6">
-                                    <button
-                                        type="submit" className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">Submit</button>
-                                </div>
-                            </form>
+            <input
+                type="text"
+                name="subtitle"
+                value={data.subtitle}
+                onChange={handleChange}
+                placeholder="Subtitle"
+                className="w-full mb-4 p-3 border rounded"
+            />
 
+            <input
+                type="text"
+                name="category"
+                value={data.category}
+                onChange={handleChange}
+                placeholder="Category"
+                required
+                className="w-full mb-4 p-3 border rounded"
+            />
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <textarea
+                name="description"
+                value={data.description}
+                onChange={handleChange}
+                placeholder="Description"
+                rows="5"
+                required
+                className="w-full mb-4 p-3 border rounded"
+            />
+
+            <input
+                type="file"
+                name="image"
+                onChange={handleChange}
+                className="mb-4"
+            />
+
+            <button
+                type="submit"
+                className="w-full bg-indigo-600 text-white py-3 rounded"
+            >
+                {type === 'Create' ? 'Publish Blog' : 'Update Blog'}
+            </button>
+        </form>
     )
 }
 

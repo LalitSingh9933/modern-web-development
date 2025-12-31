@@ -7,7 +7,7 @@ import { baseUrl } from '../../config'
 function SingleBlog() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [blog, setBlog] = useState(null)
+  const [blog, setBlog] = useState({})
   const [loading, setLoading] = useState(true)
 
   const fetchBlog = async () => {
@@ -26,8 +26,19 @@ function SingleBlog() {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this blog?')) {
       try {
-        await axios.delete(`${baseUrl}/blog/${id}`)
-        navigate('/') // Redirect to home after deletion
+      const response =  await axios.delete(`${baseUrl}/blog/${id}`,{
+        headers :{
+          'Authorization': localStorage.getItem('token')
+        }
+      })
+      if(response.status==200)
+      {
+  navigate('/') // Redirect to home after deletion
+      }
+      else{
+        alert("Somethings went wrong. Try again !")
+      }
+      
       } catch (error) {
         console.error('Error deleting blog:', error)
       }
@@ -48,7 +59,7 @@ function SingleBlog() {
         <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
 
         <div className="flex items-center text-gray-600 mb-8">
-          <span className="font-medium">{blog.author || 'Anonymous'}</span>
+          <span className="font-medium">{blog?.userId?.username  || 'Anonymous'}</span>
           <span className="mx-2">•</span>
           <span>{new Date(blog.createdAt).toLocaleDateString('en-US', {
             year: 'numeric',
@@ -57,9 +68,9 @@ function SingleBlog() {
           })}</span>
         </div>
 
-        {blog.image && (
+        {blog.imageUrl && (
           <img
-            src={blog.image}
+            src={blog.imageUrl}
             alt={blog.title}
             className="w-full mb-8 rounded-lg"
           />

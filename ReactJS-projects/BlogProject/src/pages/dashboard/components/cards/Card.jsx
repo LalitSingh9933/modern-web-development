@@ -24,7 +24,7 @@ function Card({ blog }) {
 
                 {/* Author and date row */}
                 <div className="flex items-center text-sm text-gray-600 mb-2">
-                    <span className="font-medium">{blog.author || 'Anonymous'}</span>
+                    <span className="font-medium">{blog?.userId?.username || 'Anonymous'}</span>
                     <span className="mx-2">•</span>
                     <span>{formatDate(blog.createdAt)}</span>
                 </div>
@@ -55,7 +55,7 @@ function Card({ blog }) {
                     {blog.image || (
                         <div className="w-32 h-24 shrink-0">
                             <img
-                                src={ blog.image || "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
+                                src={ blog.imageUrl || "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
                                 alt={blog.title}
                                 className="w-full h-full object-cover"
                                 onError={(e) => e.target.style.display = 'none'}
